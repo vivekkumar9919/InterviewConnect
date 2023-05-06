@@ -32,12 +32,13 @@ export default function SignupPage() {
         // Handle the response from the backend
         console.log(response.data);
 
-        // Clear the form inputs
+        // Clear the form inputs data
         setUsername('');
         setName('');
         setPassword('');
         setConfirmPassword('');
         // login to the user
+        
         login();
 
         // after login redirect to home page
