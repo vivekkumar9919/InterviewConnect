@@ -1,0 +1,189 @@
+
+/* .quesContPage{
+    border: 2px solid red;
+    width: 100%;
+} */
+.outerCont{
+    border: 2px solid #61398F;
+    margin: 20px 110px 80px 110px;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: #8B5FBF 0px 20px 30px -10px;
+    font-family: 'Armata';
+}
+.fieldBox{
+    /* border: 2px solid red; */
+    min-height: 220px;
+    padding: 40px;
+    background-color: #f5f6f9;
+    border-radius: 30px;
+}
+.fieldNameCont{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}
+.fieldName{
+    cursor: pointer;
+    font-size: 18px;
+    border: 2px solid #D6C6E1;
+    padding: 10px 15px 10px 15px;
+    border-radius: 10px;
+    background-color: #F5F3F7;
+    margin-top: 20px;
+}
+
+
+
+
+
+/* WebDevelopemnt, subject and datastructure Page  css start here */
+#webDpage,#datastructure,#subject{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.topicCont{
+    display: flex;
+    flex-wrap: wrap;
+}
+.topicName{
+    border: 1px solid gray;
+    padding: 7px 15px;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: white;
+    cursor: pointer;
+}
+/* WebDevelopemnt, subject and datastructure Page  css end here */
+
+
+
+
+/* question and answer container css start */
+#QandACont{
+  /* border: 1px solid red; */
+  border-radius: 30px;
+  padding: 30px 40px 40px 40px;
+  /* margin-top: 20px; */
+}
+/* .QuestTopicHeading{
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+} */
+.levelCont{
+    display: flex;
+    flex-wrap: wrap;
+}
+.level{
+    border: 1px solid black;
+    padding: 2px 20px 2px 20px;
+    border-radius: 50px;
+    margin: 10px;
+    margin-left: 0px;
+    cursor: pointer;
+}
+.level.active {
+  background-color: blue;
+}
+/* horizontal line css start  */
+.separator{
+    display:flex;
+    align-items: center;
+  }
+  
+  .separator .line{
+    height: 2px;
+    flex: 1;
+    background-color: #000;
+  }
+  
+  .separator h2{
+    padding: 0 2rem;
+  }
+/* horizontal line css end  */
+
+.QuestionCont{
+    margin-top: 10px;
+}
+
+.accordion-button[aria-expanded="true"] {
+    /* border-radius: 10px; */
+    background-color: #F5F3F7;
+    border-radius: 55px;
+  }
+  .accordion-item {
+    border-radius: 50px;
+  }
+  .accordion-button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+
+/* question and answer container css end */
+
+
+/* Question Page css start  */
+.pageBtn{
+    background-color: #61398F;
+    color: white;
+}
+/* Question Page css end  */
+
+
+
+
+/* @media screen and (min-width: 768px) {
+
+} */
+
+
+/* for small screen */
+@media screen and (max-width: 767px) {
+  .outerCont{
+    border: 2px solid #61398F;
+    margin: 40px 10px 40px 10px;
+    padding: 10px;
+
+   }
+   .line{
+    display: none;
+   }
+   .separator{
+    /* border: 2px solid red; */
+    font-size: 18px;
+
+    display:flex;
+    justify-content: center;
+  }
+  #QandACont{
+    /* border: 1px solid red; */
+    border-radius: 30px;
+    padding: 30px 10px 40px 10px;
+
+  }
+  .pageBtn{
+    font-size: 14px;
+    padding: 7px 10px !important;
+    margin: 0px;
+    /* border: 2px solid red; */
+  }
+  .level{
+    font-size: 11px;
+    padding: 5px 15px;
+  }
+  .fieldName{
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .fieldBox{
+    /* border: 2px solid red; */
+    padding: 20px;
+  }
+  .topicName{
+    font-size: 14px;
+  }
+}

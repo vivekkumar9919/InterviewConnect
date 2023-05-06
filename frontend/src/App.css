@@ -1,0 +1,299 @@
+/* color code 
+    --primary-100:#424874;
+    --primary-200:#A6B1E1;
+    --primary-300:#fdf6fd;
+    --accent-100:#D9ACF5;
+    --accent-200:#FFCEFE;
+    --text-100:#292524;
+    --text-200:#64748b;
+    --bg-100:#F4EEFF;
+    --bg-200:#DCD6F7;
+    --bg-300:#bbb9e9;
+    <<<<<<<<<<<<<<<<<<<<<<<
+    >>>>>>>>>>>>>>>>>>>>>>>>
+      backColor #F5F3F7
+*/
+
+
+/* font family 
+
+all text
+font-family: 'Armata';
+
+heading 
+font-family: 'Belgrano';
+
+*/
+
+
+
+
+/* <<<<<<<<<<<<<<<<<<<<< top page css start >>>>>>>>>>>>>>>>>>>>>>>>*/
+.wave{
+  background-image: url('../public/img/wave.png');
+  height: 130px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 20px;
+}
+.wave2{
+  background-image: url('../public/img/wave2.png');
+  height: 130px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* margin-bottom: -40px; */
+}
+/* .topPageCont{
+  border: 2px solid red;
+  height: 600px;
+} */
+.topBox1{
+  /* border: 2px solid black;  */
+  padding: 0 60px 0 100px;
+}
+/* .topBox2{
+  border: 2px solid black;
+} */
+.topBoxText{
+  /* border: 2px solid green; */
+  /* height: 270px; */
+  width: 500px;
+}
+.topBoxImg{
+  /* border: 2px solid blue; */
+  height: 600px;
+  width: 700px;
+  background-image: url('../public/img/topimg1.png');
+}
+#heading{
+  text-align: center;
+  font-size: 30px;
+  color: #424874;
+  font-family: 'Archivo Black';
+  font-weight: 800;
+}
+#content{
+  text-align: center;
+  font-family: 'Cagliostro';
+}
+#getstartedBtn{
+  display: flex;
+  justify-content: center;
+}
+#getButton {
+  border-radius: .25rem;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 400;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 20px;
+  color: #fff;
+  -webkit-clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+  clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+  height: 40px;
+  font-size: 13px;
+  line-height: 14px;
+  letter-spacing: 1.2px;
+  transition: .2s .1s;
+  background-image: linear-gradient(90deg,#292524,#bbb9e9);
+  border: 0 solid;
+  overflow: hidden;
+}
+
+#getButton:hover {
+  cursor: pointer;
+  transition: all .3s ease-in;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+/* code for horizontal line started */
+        
+.divider {								/* minor cosmetics */
+  display: table; 
+  font-size: 24px; 
+  text-align: center; 
+  width: 95%; 
+}
+
+.divider span { display: table-cell; position: relative; }
+.divider span:first-child, .divider span:last-child {
+  width: 50%;
+  top: 19px;							/* adjust vertical align */
+  -moz-background-size: 100% 2px; 	/* line width */
+  background-size: 100% 2px; 			/* line width */
+  background-position: 0 0, 0 100%;
+  background-repeat: no-repeat;
+  
+}
+.divider span:first-child {				/* color changes in here */
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#000));
+  background-image: -webkit-linear-gradient(180deg, transparent, #000);
+  background-image: -moz-linear-gradient(180deg, transparent, #000);
+  background-image: -o-linear-gradient(180deg, transparent, #000);
+  background-image: linear-gradient(90deg, transparent, #000);
+}
+.divider span:nth-child(2) {
+  color: #000;
+  padding: 0px 5px;
+  width: auto; 
+  white-space: nowrap;
+  color: red;
+  font-style: italic;
+}
+.divider span:last-child {				/* color changes in here */
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#000), to(transparent));
+  background-image: -webkit-linear-gradient(180deg, #000, transparent);
+  background-image: -moz-linear-gradient(180deg, #000, transparent);
+  background-image: -o-linear-gradient(180deg, #000, transparent);
+  background-image: linear-gradient(90deg, #000, transparent);
+}
+/* code for horizontal line end */
+
+.colorBox{
+  height: 100px;
+  background-color: #A6B1E1;
+  margin-top: -10px;
+}
+
+/* info box css start */
+.topBox2{
+  /* border: 2px solid red; */
+  margin-top: 50px;
+}
+.infoBox {
+  height: 100px;
+  width: 200px;
+  /* border: 1px solid #292524; */
+  /* background-color: #424874; */
+  /* background-color: #F5F3F7; */
+  background-image: url('../public/img/infobg1p.png');
+  margin-bottom: 20px;
+  border-radius: 15px;
+ 
+}
+
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  /* background-color: #FFCEFE; */
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  padding: 10px;
+  font-size: 20px;
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url('../public/img/circle2p.png');
+}
+
+.infotext {
+ font-size: 26px;
+ text-align: center;
+ margin-top: -60px;
+ color: black;
+ font-family: 'Armata';
+}
+
+
+/* info box css end */
+
+
+/* get stated heding css start */
+#getStartHeadingCont{
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+#getStartHeadingbox{
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 38px;
+  font-weight: 400;
+  /* padding: 20px; */
+  width: 270px;
+  height: 100px;
+  background-image: url('../public/img/getstartbg2p.png');
+  font-family: 'Belgrano';
+}
+/* get stated heding css end */
+
+
+
+
+
+/* For large screens, display the child divs inline */
+@media screen and (min-width: 768px) {
+  .topBox1 ,.topBox2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topBox2{
+    justify-content: space-around;
+
+  }
+}
+
+/* For small screens, display the child divs vertically */
+@media screen and (max-width: 767px) {
+  .topBox1 , .topBox2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .topBoxText{
+    /* border: 2px solid green; */
+    width: 350px;
+    margin-left: -40px;
+    
+  }
+  .wave{
+    background-image: url('../public/img/wavephone.png');
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 50px;
+  }
+  .wave2{
+    background-image: url('../public/img/wave2.png');
+    height: 140px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .colorBox{
+    height: 100px;
+    background-color: #A6B1E1;
+    margin-top: -65px;
+  }
+  .topBoxImg{
+    /* border: 2px solid blue; */
+    height: 400px;
+    width: 400px;
+    margin-left: -40px;
+    background-image: url('../public/img/topimg1phone.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #getStartHeadingbox{
+    /* border: 2px solid red; */
+    font-size: 30px;
+  }
+  .infoBox {
+    /* border: 1px solid #292524; */
+    margin-bottom: 50px;
+   
+  }
+}
+/* top page css end  >>>>>>>>>>>>>>>>>>>>>>>>*/
+
+
+
