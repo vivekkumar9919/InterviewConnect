@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BASE_URL } from '../../config';
 import axios from 'axios';
-// comment1
+// satyam
+// comment2
 export default function QuestionPage({ selectedValue }) {
 
     const [question, setQuestion] = useState([]);
