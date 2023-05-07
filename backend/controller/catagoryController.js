@@ -10,7 +10,7 @@ const catagoryController = {
 
         }
         catch(err){
-            console.log(err.message);
+            next(err);
         }
     },
     async getAllcatagory(req,res){
@@ -20,7 +20,7 @@ const catagoryController = {
                 res.status(201).json({data:data});
         }
         catch(err){
-            console.log(err);
+            next(err);
         }
     },
     async updatecatagory(req,res){
@@ -30,10 +30,10 @@ const catagoryController = {
                     cname:req.body.cname
                 }
                 const data = await catagorymodel.findByIdAndUpdate(id,newrecord,{new:true});
-                res.status(201).json({data:data});
+                res.status(201).json({message:"New record is updated", data:data});
         }
         catch(err){
-            console.log(err);
+            next(err);
         }
     },
     async deletecatagory(req,res){
@@ -43,7 +43,7 @@ const catagoryController = {
                 res.status(201).json({message:"record is deleted",record:record});
         }
         catch(err){
-            console.log(err);
+            next(err);
         }
     }
 

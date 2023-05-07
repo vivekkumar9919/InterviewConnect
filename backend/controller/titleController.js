@@ -1,49 +1,63 @@
 const titlemodel = require('../models/title');
+const CustomError = require('../utils/errorHandler');
+
 
 const titleController = {
-    async posttitle(req, res) {
+    async posttitle(req, res,next) {
 
         try {
             const data = await titlemodel.create(req.body);
+            if(!data){
+                return next(CustomError(400,"Bad Request"))
+            }
             // add one flash message also
             res.status(201).json({ message: "title successfully posted", data: data });
 
         }
         catch (err) {
-            console.log(err);
+            next(err);
         }
     },
-    async gettitleBycatagory(req, res) {
+    async gettitleBycatagory(req, res,next) {
         const cname = req.query.cname;
         try {
             const data = await titlemodel.find({cname:cname});
+            if(!data){
+                return next(CustomError(404,"Not Found"));
+            }
             res.status(201).json({ data: data });
         }
         catch (err) {
-            console.log(err);
+            next(err);
         }
     },
-    async updatetitle(req, res) {
+    async updatetitle(req, res,next) {
         const id = req.params.id;
         try {
             const newrecord = {
                 tagname:req.body.tagname
             }
             const data = await titlemodel.findByIdAndUpdate({ _id: id }, newrecord,{new:true});
-            res.status(201).json({ data: data });
+            if(err){
+                return next(CustomError(400,"Something Went Wrong"));
+            }
+            res.status(201).json({ message:"New record is updated" ,data: data  });
         }
         catch (err) {
-            console.log(err);
+            next(err);
         }
     },
-    async deletetitle(req, res) {
+    async deletetitle(req, res,next) {
         const id = req.params.id;
         try {
             await titlemodel.findByIdAndRemove({ _id: id });
+            if(err){
+                return next(CustomError(400,"Bad request"));
+            }
             res.status(201).json({ message: "record is deleted" });
         }
         catch (err) {
-            console.log(err);
+            next(err);
         }
     }
 
