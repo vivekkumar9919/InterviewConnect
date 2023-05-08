@@ -1,0 +1,12 @@
+
+.AdminCont{
+    height: 100%;
+    border: 2px solid green;
+    font-family: 'Armata';
+}
+
+.adminHeading{
+    text-align: center;
+    font-family: 'Belgrano';
+    margin-top: 20px;
+}

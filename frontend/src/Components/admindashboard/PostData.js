@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-
+import React, { useState ,useContext } from "react";
+import axios from 'axios';
+import { BASE_URL} from "../../config";
+import AuthContext from '../Context_API/AuthContex';
 
 const options = {
     beginner: "Beginner",
@@ -35,6 +37,7 @@ export default function PostData() {
     const [level, setLevel] = useState("");
     const [category, setCategory] = useState("");
     const [subCategory, setSubCategory] = useState("");
+    const { accessToken } = useContext(AuthContext)
 
     const handleCategoryChange = (e) => {
         const value = e.target.value;
@@ -52,11 +55,34 @@ export default function PostData() {
         const value = e.target.value;
         setSubCategory(value);
     };
-    const handleOnSubmit=(e)=>{
+    const handleOnSubmit= async(e)=>{
         e.preventDefault();
         // Perform form submission logic here
+        const formData={
+            qname:question,
+            answer:text,
+            cname:category,
+            tagname:subCategory,
+            level:level
+        }
+        // console.log("form data",formData)
+        console.log("cookies",accessToken);
+        await axios.post(`${BASE_URL}add-question`, formData,{ headers: { Authorization: accessToken }})
+        // await axios.post(`${BASE_URL}add-question`, formData)
+        .then((response) => {
+          console.log("response",response.data); 
+        })
+        .catch((error) => {
+          console.log("Error from post data",error); 
+        });
+
         console.log("Form submitted!");
         console.log(question, text, level ,category ,subCategory);
+        setQuestion("");
+        setText("");
+        setLevel("");
+        setCategory("");
+        setSubCategory("");
     }
     return (
         <div className="postFormCont">

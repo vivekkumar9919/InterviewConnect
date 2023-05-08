@@ -8,6 +8,8 @@ import './Css files/BeautifulPage.css'
 import './Css files/footerPage.css'
 import './Css files/AdminNavbar.css'
 import './Css files/PostData.css'
+import './Css files/GetData.css'
+import './Css files/AdminDashboard.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import AuthContextProvider from './Components/Context_API/AuthContextProvider';
 import HomeMain from './Components/HomeMain';

@@ -4,11 +4,10 @@ import AuthContext from './Context_API/AuthContex';
 
 
 export default function Navbar(props) {
-  const {isLoggedIn,logout} =useContext(AuthContext);
+  const {logout ,accessToken} =useContext(AuthContext);
 
   let navigate = useNavigate();
   let handlelogout = () => {
-    localStorage.removeItem('token');
     logout();
     navigate("auth/login");
   }
@@ -37,9 +36,14 @@ export default function Navbar(props) {
                 <li className="nav-item">
                   <a className="nav-link nav-element" href='#contactNav'>Contactus</a>
                 </li>
+                {
+                  (accessToken)?<li className="nav-item">
+                  <Link className="nav-link nav-element" to="admin">Admin</Link>
+                </li>:console.log("Not admin")
+                }
               </ul>
             </div>
-            {(!isLoggedIn) ? <form className="d-flex justify-content-end">
+            {(!accessToken) ? <form className="d-flex justify-content-end">
               <Link className="btn nav-btn mx-2" to="/auth/login" role="button"><i class="fa fa-sign-in" aria-hidden="true"></i></Link>
               {/* <Link className="btn nav-btn mx-2" to="/auth/signup" role="button">Signup</Link> */}
             </form> : <button className="btn btn-danger mx-2" onClick={handlelogout}> <i class="fa fa-sign-out" aria-hidden="true"></i></button>}

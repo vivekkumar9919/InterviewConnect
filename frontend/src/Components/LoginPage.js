@@ -4,6 +4,8 @@ import AuthContext from './Context_API/AuthContex';
 import { useContext } from 'react';
 import { BASE_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -19,28 +21,41 @@ export default function LoginPage() {
       // Create an object with the login credentials
       const formData = {
         email:username,
-        password,
+        password:password,
       };
 
       // Make a POST request to the backend API
       const response = await axios.post(`${BASE_URL}user/login`, formData);
 
       // Handle the response from the backend
-      console.log(response.data); 
+      console.log("login data",response.data); 
+    
+
       alert(response.data.message);
-      const isAdmin=response.data.user.admin;
-      if(isAdmin){
-        navigate('admin/dashboard');
-      }
+      // const isAdmin=true;
+      const isAdmin=response.data.details.admin;
+      // console.log(isAdmin);
+      console.log("is admin ",isAdmin);
+
       // Clear the form inputs
       setUsername('');
       setPassword('');
       setErrorMsg('');
 
       // set login Context api
+      // login();
+      if(isAdmin){
+        const token =response.data.token;
+        Cookies.set('authToken', token);
+        const cookieValue = Cookies.get('authToken');
+        console.log(cookieValue);
+        login(cookieValue);
+        navigate('/admin');
+      }
+      else{
+      navigate('/');
       login();
-
-      navigate('/')
+      }
 
     } catch (error) {
       setErrorMsg(error.message);
