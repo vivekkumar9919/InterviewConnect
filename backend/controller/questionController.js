@@ -9,8 +9,8 @@ const questionController = {
 
         }
         catch(err){
-            console.log(err)
-            next(new CustomError(err.message, 500, "Unable to add Question"));
+            // console.log(err)
+            next(err);
         }
     },
     async getquestionByTagName(req,res,next){
@@ -20,7 +20,7 @@ const questionController = {
                 res.status(201).json({data:data});
         }
         catch(err){
-            next(new CustomError(err.message, 401,"Unable to fetch questions"))
+            next(err);
         }
     },
     async updatequestion(req,res){
@@ -36,7 +36,7 @@ const questionController = {
                 res.status(201).json({data:data});
         }
         catch(err){
-            console.log(err);
+            next(err)
         }
     },
     async deletequestion(req,res){
@@ -46,7 +46,7 @@ const questionController = {
                 res.status(201).json({message:"record is deleted"});
         }
         catch(err){
-            console.log(err);
+            next(err);
         }
     }
 
