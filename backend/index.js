@@ -15,13 +15,14 @@ const adminRouter  = require('./routes/adminRouter');
 const cors = require('cors');
 require("dotenv").config();
 
-
 //middlewares
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json())
 app.use(express.json());
 app.use(CookieParser());
+
 app.use(cors({origin:"*"}));
+
 
 
 //Routes we are using
@@ -33,6 +34,9 @@ app.use(questionRouter);
 app.use(feedbackRotuer);
 app.use(adminRouter);
 
+
+
+const port = process.env.PORT || 8080;
 
 //connecting to database
 connection();

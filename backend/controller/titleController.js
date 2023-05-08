@@ -8,13 +8,15 @@ const titleController = {
         try {
             const data = await titlemodel.create(req.body);
             if(!data){
-                return next(CustomError(400,"Bad Request"))
+                return next(CustomError(400,"Cannot post title"))
+
             }
             // add one flash message also
             res.status(201).json({ message: "title successfully posted", data: data });
 
         }
         catch (err) {
+            // console.log(err);
             next(err);
         }
     },
@@ -23,7 +25,7 @@ const titleController = {
         try {
             const data = await titlemodel.find({cname:cname});
             if(!data){
-                return next(CustomError(404,"Not Found"));
+                return next(CustomError(400,"Title Not Found"));
             }
             res.status(201).json({ data: data });
         }

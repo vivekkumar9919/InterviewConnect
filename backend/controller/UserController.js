@@ -23,7 +23,9 @@ const userController = {
                 });
 
                 //generate the token 
+
                 const token = jwt.sign({email:result.email,id:req._id},process.env.SECRET_KEY,{expiresIn:'1h'});
+
                 
                 res.status(200).json({user:result,token:token,message:"Signed Up Successfully"});
                 // console.log(result.email); 
@@ -53,7 +55,10 @@ const userController = {
                     return next(CustomError(404, "Invalid Credentials"));
                     
                 }
+                    // console.log("id = " + userDetails._id);
+
                     const token = jwt.sign({email:userDetails.email, id:req._id},process.env.SECRET_KEY,{expiresIn:'1h'});
+
 
                     res.cookie("access_token", token, {
                         httpOnly: true,

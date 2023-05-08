@@ -1,19 +1,18 @@
 const catagorymodel = require('../models/Catagory');
 
 const catagoryController = {
-    async postcatagory(req,res){
+    async postcatagory(req,res,next){
         
         try{
                 const data = await catagorymodel.create(req.body);
                 // console.log(data.title, data.questions);
                 res.status(201).json({message:"catagory successfully posted",data:data});
-
         }
         catch(err){
             next(err);
         }
     },
-    async getAllcatagory(req,res){
+    async getAllcatagory(req,res,next){
         // const name = req.query.name;
         try{
                 const data = await catagorymodel.find({});

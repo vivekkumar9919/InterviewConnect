@@ -9,8 +9,8 @@ const questionController = {
 
         }
         catch(err){
+           next(err);
             // console.log(err)
-            next(err);
         }
     },
     async getquestionByTagName(req,res,next){
@@ -20,7 +20,7 @@ const questionController = {
                 res.status(201).json({data:data});
         }
         catch(err){
-            next(err);
+           next(err);
         }
     },
     async updatequestion(req,res){
@@ -36,7 +36,8 @@ const questionController = {
                 res.status(201).json({data:data});
         }
         catch(err){
-            next(err)
+            next(err);
+
         }
     },
     async deletequestion(req,res){
