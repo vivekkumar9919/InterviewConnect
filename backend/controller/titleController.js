@@ -1,4 +1,6 @@
 const titlemodel = require('../models/title');
+const CustomError = require('../utils/errorHandler');
+
 
 const titleController = {
     async posttitle(req, res,next) {
@@ -7,6 +9,7 @@ const titleController = {
             const data = await titlemodel.create(req.body);
             if(!data){
                 return next(CustomError(400,"Cannot post title"))
+
             }
             // add one flash message also
             res.status(201).json({ message: "title successfully posted", data: data });
@@ -30,14 +33,17 @@ const titleController = {
             next(err);
         }
     },
-    async updatetitle(req, res) {
+    async updatetitle(req, res,next) {
         const id = req.params.id;
         try {
             const newrecord = {
                 tagname:req.body.tagname
             }
             const data = await titlemodel.findByIdAndUpdate({ _id: id }, newrecord,{new:true});
-            res.status(201).json({ data: data });
+            if(err){
+                return next(CustomError(400,"Something Went Wrong"));
+            }
+            res.status(201).json({ message:"New record is updated" ,data: data  });
         }
         catch (err) {
             next(err);
@@ -47,6 +53,9 @@ const titleController = {
         const id = req.params.id;
         try {
             await titlemodel.findByIdAndRemove({ _id: id });
+            if(err){
+                return next(CustomError(400,"Bad request"));
+            }
             res.status(201).json({ message: "record is deleted" });
         }
         catch (err) {

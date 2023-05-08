@@ -10,4 +10,7 @@ router.put('/update-title/:id',auth.authenticate,titleController.updatetitle);
 //delete the title with their ID
 router.delete('/delete-title/:id',auth.authenticate,titleController.deletetitle);
 
+
+
+
 module.exports = router;

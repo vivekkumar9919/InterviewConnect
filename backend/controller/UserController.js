@@ -23,7 +23,9 @@ const userController = {
                 });
 
                 //generate the token 
-                const token = jwt.sign({email:result.email,id:existinguser._id},process.env.SECRET_KEY,{expiresIn:'24h'});
+
+                const token = jwt.sign({email:result.email,id:req._id},process.env.SECRET_KEY,{expiresIn:'1h'});
+
                 
                 res.status(200).json({user:result,token:token,message:"Signed Up Successfully"});
                 // console.log(result.email); 
@@ -54,7 +56,9 @@ const userController = {
                     
                 }
                     // console.log("id = " + userDetails._id);
-                    const token = jwt.sign({id:userDetails._id,admin:userDetails.admin},process.env.SECRET_KEY,{expiresIn:'24h'});
+
+                    const token = jwt.sign({email:userDetails.email, id:req._id},process.env.SECRET_KEY,{expiresIn:'1h'});
+
 
                     res.cookie("access_token", token, {
                         httpOnly: true,

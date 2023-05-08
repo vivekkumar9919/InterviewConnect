@@ -29,7 +29,7 @@ const catagoryController = {
                     cname:req.body.cname
                 }
                 const data = await catagorymodel.findByIdAndUpdate(id,newrecord,{new:true});
-                res.status(201).json({data:data});
+                res.status(201).json({message:"New record is updated", data:data});
         }
         catch(err){
             next(err);

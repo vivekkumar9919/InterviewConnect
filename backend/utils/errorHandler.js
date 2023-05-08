@@ -1,3 +1,4 @@
+
 // class CustomError extends Error {
 //     constructor(message, statuscode, name) {
 //         super(message)
@@ -8,6 +9,7 @@
 //     //     return new CustomError(message, statuscode, name)
 //     // }
 // }
+
 
 const CustomError = (status,message)=>{
     const err = new Error();

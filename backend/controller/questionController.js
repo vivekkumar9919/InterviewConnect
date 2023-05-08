@@ -10,6 +10,7 @@ const questionController = {
         }
         catch(err){
            next(err);
+            // console.log(err)
         }
     },
     async getquestionByTagName(req,res,next){
@@ -36,6 +37,7 @@ const questionController = {
         }
         catch(err){
             next(err);
+
         }
     },
     async deletequestion(req,res){
