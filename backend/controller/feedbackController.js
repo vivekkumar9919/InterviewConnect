@@ -1,24 +1,24 @@
 const feedbackmodel = require('../models/feedback');
 
 const feedbackController = {
-    async postFeedback(req,res){
+    async postFeedback(req,res,next){
         try{
 
             const result = await feedbackmodel.create(req.body);
             res.status(201).json({comment:result});
         }
         catch(err){
-            console.log(err);
+            next(err);
         }
     },
-    async showfeedback(req,res){
+    async showfeedback(req,res,next){
         try{
 
             const result = await feedbackmodel.find({});
             res.status(201).json({comment:result});
         }
         catch(err){
-            console.log(err);
+            next(err);
         }
     }
 }

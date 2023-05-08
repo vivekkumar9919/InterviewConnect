@@ -4,9 +4,15 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 
 
-router.post('/add-catagory',catagoryController.postcatagory);
-router.get('/get-catagory',catagoryController.getAllcatagory);
-router.put('/update-catagory/:id',catagoryController.updatecatagory);
-router.delete('/delete-catagory/:id',catagoryController.deletecatagory);
+// Post One catagory 
+router.post('/add-catagory',auth.authenticate,catagoryController.postcatagory);
+
+//Fetch all the catagories
+router.get('/get-catagories',auth.authenticate,catagoryController.getAllcatagory);
+
+//update the catagory with their ID
+router.put('/update-catagory/:id',auth.authenticate,catagoryController.updatecatagory);
+//delete the catagory with their ID
+router.delete('/delete-catagory/:id',auth.authenticate,catagoryController.deletecatagory);
 
 module.exports = router;

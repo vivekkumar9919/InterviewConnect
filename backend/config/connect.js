@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
-const url = "mongodb://127.0.0.1:27017/InterviewConnect";
-
-
 const connection = async ()=> {
     try{
             mongoose.set('strictQuery',false);
-            await mongoose.connect(url);
+            //connecting to mongoDB
+            await mongoose.connect(process.env.MONGO_URL);
+            //showing message to the app server
             console.log(`Database is connected`)
     }
     catch(err){

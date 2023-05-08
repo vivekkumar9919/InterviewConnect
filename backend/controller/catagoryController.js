@@ -1,26 +1,25 @@
 const catagorymodel = require('../models/Catagory');
 
 const catagoryController = {
-    async postcatagory(req,res){
+    async postcatagory(req,res,next){
         
         try{
                 const data = await catagorymodel.create(req.body);
                 // console.log(data.title, data.questions);
                 res.status(201).json({message:"catagory successfully posted",data:data});
-
         }
         catch(err){
-            console.log(err.message);
+            next(err);
         }
     },
-    async getAllcatagory(req,res){
+    async getAllcatagory(req,res,next){
         // const name = req.query.name;
         try{
                 const data = await catagorymodel.find({});
                 res.status(201).json({data:data});
         }
         catch(err){
-            console.log(err);
+            next(err);
         }
     },
     async updatecatagory(req,res){
@@ -33,7 +32,7 @@ const catagoryController = {
                 res.status(201).json({data:data});
         }
         catch(err){
-            console.log(err);
+            next(err);
         }
     },
     async deletecatagory(req,res){
@@ -43,7 +42,7 @@ const catagoryController = {
                 res.status(201).json({message:"record is deleted",record:record});
         }
         catch(err){
-            console.log(err);
+            next(err);
         }
     }
 

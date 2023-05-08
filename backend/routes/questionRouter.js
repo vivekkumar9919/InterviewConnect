@@ -2,10 +2,13 @@ const questionController = require('../controller/questionController');
 const express = require('express');
 const router = express.Router();
 
-
-router.post('/add-question',questionController.postquestion);
-router.get('/get-questions',questionController.getquestionByTagName);
-router.put('/update-question/:id',questionController.updatequestion);
-router.delete('/delete-question/:id',questionController.deletequestion);
+// add question
+router.post('/add-question',auth.authenticate,questionController.postquestion);
+//Fetch all the questions
+router.get('/get-Allquestions',auth.authenticate,questionController.getquestionByTagName);
+//update the question with their ID
+router.put('/update-question/:id',auth.authenticate,questionController.updatequestion);
+//delete the question with their ID
+router.delete('/delete-question/:id',auth.authenticate,questionController.deletequestion);
 
 module.exports = router;
