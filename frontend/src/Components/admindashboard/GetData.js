@@ -8,21 +8,39 @@ const webDevOptions = {
   html: "HTML",
   css: "CSS",
   javascript: "JavaScript",
+  react:"React.js",
+  vue:"Vuejs",
   nodejs: "Node.js",
+  express:"Expressjs",
   mongodb: "MongoDB",
+  sql:"SQL",
+  java:"Java",
+  php:"Php",
+  python:"Python",
+  cpp:"C/C++",
+  testing:"Testing",
+  git:"Git"
 };
 
 const dsOptions = {
+  searching:"Searching",
+  sorting:"Sorting",
+  algorithm:"Algorithm",
   array: "Array",
-  list: "List",
+  linkedlist: "Linkedlist",
   stack: "Stack",
-  queue: "Queue",
+  heap: "Heap",
+  hashing: "Hashing",
+  tree: "Tree",
+  graph: "Graph",
 };
 
 const coreSubjOptions = {
   os: "Operating System",
   cn: "Computer Networks",
+  oops:"Oops",
   dbms: "Database Management System",
+  se:"Software Engineering"
 };
 
 

@@ -65,7 +65,7 @@ export default function QuestionPage({ selectedValue }) {
       };
     
       const showAdvanced = () => {
-        const advancedQuestions = question.filter((item) => item.level === "Advanced");
+        const advancedQuestions = question.filter((item) => item.level === "advanced");
         setFilteredQuestions(advancedQuestions);
         setCurrentPage(0);
       };
