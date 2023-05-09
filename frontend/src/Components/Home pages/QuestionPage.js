@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { BASE_URL } from '../../config';
+// import { BASE_URL } from '../../config';
 import axios from 'axios';
-// satyam
-// comment2
+const BASE_URL=process.env.REACT_APP_BASE_URL
+
+
 export default function QuestionPage({ selectedValue }) {
 
     const [question, setQuestion] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [filteredQuestions, setFilteredQuestions] = useState([]);
+    // console.log("Base url ",BASE_URL);
 
     const handlePrevPage = () => {
         setCurrentPage((currentPage) => currentPage - 1);

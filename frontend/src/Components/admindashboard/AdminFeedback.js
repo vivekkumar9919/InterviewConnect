@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { BASE_URL } from '../../config';
+// import { BASE_URL } from '../../config';
+const BASE_URL=process.env.REACT_APP_BASE_URL;
 
 export default function AdminFeedback() {
     const [feedbackdata, setFeedbackData] = useState([]);

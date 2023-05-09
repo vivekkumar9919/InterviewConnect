@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import AuthContext from './Context_API/AuthContex';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../config';
+// import { BASE_URL } from '../config';
+const BASE_URL=process.env.REACT_APP_BASE_URL;
 
 export default function SignupPage() {
   const [username, setUsername] = useState('');

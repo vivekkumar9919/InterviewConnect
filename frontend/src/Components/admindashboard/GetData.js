@@ -1,8 +1,8 @@
 import React, { useState, useEffect ,useContext } from "react";
 import axios from 'axios'
-import { BASE_URL } from "../../config";
+// import { BASE_URL } from "../../config";
 import AuthContext from "../Context_API/AuthContex";
-
+const BASE_URL=process.env.REACT_APP_BASE_URL;
 
 const webDevOptions = {
   html: "HTML",
@@ -49,7 +49,7 @@ export default function GetData() {
   const [selectedTag, setSelectedTag] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [modalQuestion, setModalQuestion] = useState({});
-  const [deleteQuestionId, setDeleteQuestionId] = useState("");
+  // const [deleteQuestionId, setDeleteQuestionId] = useState("");
   const [updateFlag, setUpdateFlag] = useState(false);
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
@@ -76,9 +76,9 @@ export default function GetData() {
     fetchData();
   }, [selectedTag, updateFlag]);
 
-  const handleTagChange = (e) => {
-    setSelectedTag(e.target.value);
-  };
+  // const handleTagChange = (e) => {
+  //   setSelectedTag(e.target.value);
+  // };
 
   const handleEditClick = (question) => {
     setModalQuestion(question);
@@ -88,7 +88,7 @@ export default function GetData() {
 
   const handleDeleteClick = (questionId) => {
     // console.log(questionId);
-    setDeleteQuestionId(questionId);
+    // setDeleteQuestionId(questionId);
     console.log(showModal, questionId);
     let decision = window.confirm("Are you sure you want to delete this item?")
     if (decision)
@@ -131,7 +131,7 @@ export default function GetData() {
       .catch((error) => {
         console.log(error);
       });
-    setDeleteQuestionId("");
+    // setDeleteQuestionId("");
   };
 
 
