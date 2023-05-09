@@ -4,7 +4,14 @@
     /* border: 2px solid red; */
 }
 .navElement{
-    /* border: 2px Solid red; */
+    border: 2px Solid white;
     margin: 20px;
     padding: 10px 20px 10px 20px;
+    text-decoration: none;
+   cursor: pointer;
+}
+.Link{
+    text-decoration: none !important;
+    color: white !important; 
+
 }

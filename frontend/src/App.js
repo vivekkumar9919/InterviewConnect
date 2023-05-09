@@ -10,6 +10,7 @@ import './Css files/AdminNavbar.css'
 import './Css files/PostData.css'
 import './Css files/GetData.css'
 import './Css files/AdminDashboard.css'
+import './Css files/AdminFeedback.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import AuthContextProvider from './Components/Context_API/AuthContextProvider';
 import HomeMain from './Components/HomeMain';
@@ -22,6 +23,7 @@ import GetData from './Components/admindashboard/GetData';
 import PostData from './Components/admindashboard/PostData';
 import DeleteData from './Components/admindashboard/DeleteData';
 import UpdateData from './Components/admindashboard/UpdateData';
+import AdminFeedback from './Components/admindashboard/AdminFeedback';
 function App() {
   return (
     <div className="App">
@@ -47,6 +49,7 @@ function App() {
               <Route path="post" element={<PostData/>}/>
               <Route path="delete" element={<DeleteData/>}/>
               <Route path="update" element={<UpdateData/>}/>
+              <Route path="fetchfeedback" element={<AdminFeedback/>}/>
             </Route>
 
           </Routes>
