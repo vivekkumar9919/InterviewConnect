@@ -1,16 +1,45 @@
-import React ,{useContext} from 'react'
+import React ,{useState, useContext} from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import AuthContext from './Context_API/AuthContex';
+import axios from 'axios'
+import { BASE_URL } from '../config';
 
 
 export default function Navbar(props) {
   const {logout ,accessToken} =useContext(AuthContext);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
 
   let navigate = useNavigate();
   let handlelogout = () => {
     logout();
     navigate("auth/login");
   }
+
+  const handleChange = (event) => {
+    setFormData({...formData, [event.target.id]: event.target.value});
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post(`${BASE_URL}add-comment`, formData)
+      .then((response) => {
+        console.log(response.data);
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
   return (
     <div className='NavbarCont'>
       <nav className="navbar navbar-expand-lg bg-color fixed-top"  >
@@ -52,7 +81,7 @@ export default function Navbar(props) {
       </nav>
 
       {/* feedback modal code */}
-      <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -60,20 +89,24 @@ export default function Navbar(props) {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label for="recipient-name" className="col-form-label">Email:-</label>
-                  <input type="text" className="form-control" id="recipient-name" />
+                  <label htmlFor="name" className="col-form-label">Name:-</label>
+                  <input type="text" className="form-control" id="name" required onChange={handleChange} value={formData.name} />
                 </div>
                 <div className="mb-3">
-                  <label for="message-text" className="col-form-label">Message:</label>
-                  <textarea className="form-control" id="message-text"></textarea>
+                  <label htmlFor="email" className="col-form-label">Email:-</label>
+                  <input type="email" className="form-control" id="email" required onChange={handleChange} value={formData.email} />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="message" className="col-form-label">Message:</label>
+                  <textarea className="form-control" id="message" required onChange={handleChange} value={formData.message}></textarea>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Send message</button>
                 </div>
               </form>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Send message</button>
             </div>
           </div>
         </div>

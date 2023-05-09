@@ -1,0 +1,10 @@
+.FeedbackHeading{
+    text-align: center;
+    font-family: 'Belgrano';
+}
+
+.FeedbackDataCont{
+    margin: 30px 10px 30px 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
