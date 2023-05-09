@@ -2,7 +2,8 @@ import React ,{useState, useContext} from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import AuthContext from './Context_API/AuthContex';
 import axios from 'axios'
-import { BASE_URL } from '../config';
+// import { BASE_URL } from '../config';
+const BASE_URL=process.env.REACT_APP_BASE_URL;
 
 
 export default function Navbar(props) {
