@@ -30,7 +30,7 @@ export default function QuestionPage({ selectedValue }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${BASE_URL}get-questions/`, {
+                const response = await axios.get(`${BASE_URL}get-Allquestions/`, {
                     params: {
                         tagname: selectedValue ,
                     },
@@ -53,19 +53,19 @@ export default function QuestionPage({ selectedValue }) {
         setCurrentPage(0);
       };
     const showBeginner = () => {
-        const beginnerQuestions = question.filter((item) => item.level === "Beginner");
+        const beginnerQuestions = question.filter((item) => item.level === "beginner");
         setFilteredQuestions(beginnerQuestions);
         setCurrentPage(0);
       };
     
       const showMedium = () => {
-        const mediumQuestions = question.filter((item) => item.level === "Medium");
+        const mediumQuestions = question.filter((item) => item.level === "medium");
         setFilteredQuestions(mediumQuestions);
         setCurrentPage(0);
       };
     
       const showAdvanced = () => {
-        const advancedQuestions = question.filter((item) => item.level === "Advanced");
+        const advancedQuestions = question.filter((item) => item.level === "advanced");
         setFilteredQuestions(advancedQuestions);
         setCurrentPage(0);
       };

@@ -1,0 +1,18 @@
+
+/* .getDataCont{
+    border: 2px solid red;
+} */
+
+.getDataForm{
+    /* border: 2px solid red; */
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+.getQuestionCont{
+    /* border: 2px solid black; */
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+}

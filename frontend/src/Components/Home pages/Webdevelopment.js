@@ -12,7 +12,7 @@ export default function webdevelopment({ handleValueSelect }) {
         <div className="topicName" onClick={() => handleClick("javascript")}>Javascritp</div>
         <div className="topicName" onClick={() => handleClick("react")}>Reactjs</div>
         <div className="topicName" onClick={() => handleClick("vue")}>Vuejs</div>
-        <div className="topicName" onClick={() => handleClick("node")}>Nodejs</div>
+        <div className="topicName" onClick={() => handleClick("nodejs")}>Nodejs</div>
         <div className="topicName" onClick={() => handleClick("express")}>expressjs</div>
         <div className="topicName" onClick={() => handleClick("mongodb")}>MongoDB</div>
         <div className="topicName" onClick={() => handleClick("sql")}>SQL</div>
