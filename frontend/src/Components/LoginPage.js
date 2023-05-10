@@ -2,9 +2,9 @@ import React ,{useState} from  'react'
 import axios from 'axios'
 import AuthContext from './Context_API/AuthContex';
 import { useContext } from 'react';
-// import { BASE_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import Lodder from './Lodder/Lodder';
 const BASE_URL=process.env.REACT_APP_BASE_URL;
 
 
@@ -12,12 +12,13 @@ export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [islodder,setIslodder]=useState(false);
   const navigate=useNavigate();
   const {login}=useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setIslodder(true);
     try {
       // Create an object with the login credentials
       const formData = {
@@ -36,13 +37,13 @@ export default function LoginPage() {
       // const isAdmin=true;
       const isAdmin=response.data.details.admin;
       // console.log(isAdmin);
-      console.log("is admin ",isAdmin);
+      // console.log("is admin ",isAdmin);
 
       // Clear the form inputs
       setUsername('');
       setPassword('');
       setErrorMsg('');
-
+      setIslodder(false);
       // set login Context api
       // login();
       if(isAdmin){
@@ -58,8 +59,9 @@ export default function LoginPage() {
       login();
       }
 
-    } catch (error) {
-      setErrorMsg(error.message);
+    } catch (err) {
+      setErrorMsg("Email or Password not matched!");
+      setIslodder(false);
     }
   };
   return (
@@ -89,7 +91,8 @@ export default function LoginPage() {
                   <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </p>
                 <p>
-                  <input type="submit" value="Login In" />
+                  {/* <input type="submit" value="Login In" /> */}
+                  {!islodder ?<input type="submit" value="Login In" /> :<Lodder/>}
                 </p>
                 <p>
                   <a href="/">Forget Password?</a>
