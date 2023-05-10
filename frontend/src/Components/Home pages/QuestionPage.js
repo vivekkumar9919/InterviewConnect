@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { BASE_URL } from '../../config';
 import axios from 'axios';
+import Lodder from '../Lodder/Lodder';
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 
@@ -9,6 +10,7 @@ export default function QuestionPage({ selectedValue }) {
     const [question, setQuestion] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [filteredQuestions, setFilteredQuestions] = useState([]);
+    const [islodder,setIslodder]=useState(true);
     // console.log("Base url ",BASE_URL);
 
     // calling API it fetch the question
@@ -22,13 +24,14 @@ export default function QuestionPage({ selectedValue }) {
                 });
                 setQuestion(response.data.data);
                 setFilteredQuestions(response.data.data);
+                setIslodder(false);
             } catch (error) {
                 console.error(error);
             }
         };
 
         fetchData();
-    }, [selectedValue]);
+    }, [selectedValue ,islodder]);
 
     const handlePrevPage = () => {
         setCurrentPage((currentPage) => currentPage - 1);
@@ -94,7 +97,7 @@ export default function QuestionPage({ selectedValue }) {
 
             <div className='QuestionCont'>
                 <div className='accordion accordion-flush' id='accordionFlushExample'>
-                    {question ? (
+                    {!islodder ? (
                         pageQuestions.map((item, index) => (
                             <div className='accordion-item' key={index}>
                                 <h2 className='accordion-header'>
@@ -124,9 +127,10 @@ export default function QuestionPage({ selectedValue }) {
                             </div>
                         ))
                     ) : (
-                        <p>Loading...</p>
+                        <Lodder/>
                     )}
                 </div>
+
                 <div className='d-flex justify-content-between mt-3'>
                     <button
                         className='btn  pageBtn'
