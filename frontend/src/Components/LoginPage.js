@@ -2,9 +2,10 @@ import React ,{useState} from  'react'
 import axios from 'axios'
 import AuthContext from './Context_API/AuthContex';
 import { useContext } from 'react';
-import { BASE_URL } from '../config';
+// import { BASE_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+const BASE_URL=process.env.REACT_APP_BASE_URL;
 
 
 export default function LoginPage() {
@@ -65,7 +66,7 @@ export default function LoginPage() {
     <div className='loginCont'>
 
       <div className="wrapper">
-      <div className='errorMsg'>error msg {errorMsg}</div>
+      <div className='errorMsg'>{errorMsg}</div>
         <div className="container">
           <div className="col-left">
             <div className="login-text">

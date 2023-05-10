@@ -2,7 +2,8 @@ import React ,{useState, useContext} from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import AuthContext from './Context_API/AuthContex';
 import axios from 'axios'
-import { BASE_URL } from '../config';
+// import { BASE_URL } from '../config';
+const BASE_URL=process.env.REACT_APP_BASE_URL;
 
 
 export default function Navbar(props) {
@@ -73,9 +74,9 @@ export default function Navbar(props) {
               </ul>
             </div>
             {(!accessToken) ? <form className="d-flex justify-content-end">
-              <Link className="btn nav-btn mx-2" to="/auth/login" role="button"><i class="fa fa-sign-in" aria-hidden="true"></i></Link>
+              <Link className="btn nav-btn mx-2" to="/auth/login" title='Login' ><i class="fa fa-sign-in" aria-hidden="true" ></i></Link>
               {/* <Link className="btn nav-btn mx-2" to="/auth/signup" role="button">Signup</Link> */}
-            </form> : <button className="btn btn-danger mx-2" onClick={handlelogout}> <i class="fa fa-sign-out" aria-hidden="true"></i></button>}
+            </form> : <button className="btn btn-danger mx-2" onClick={handlelogout} > <i class="fa fa-sign-out" aria-hidden="true"></i></button>}
           </div>
         </div>
       </nav>
