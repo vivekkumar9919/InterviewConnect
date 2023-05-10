@@ -66,7 +66,7 @@ export default function LoginPage() {
     <div className='loginCont'>
 
       <div className="wrapper">
-      <div className='errorMsg'>error msg {errorMsg}</div>
+      <div className='errorMsg'>{errorMsg}</div>
         <div className="container">
           <div className="col-left">
             <div className="login-text">

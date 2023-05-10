@@ -58,7 +58,7 @@ export default function SignupPage() {
   return (
     <div className='signupCont'>
       <div className="wrapper">
-        <div className='errorMsg'>error msg {errorMsg}</div>
+        <div className='errorMsg'>{errorMsg}</div>
         <div className="container">
           <div className="col-left">
             <div className="login-text">
