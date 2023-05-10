@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { BASE_URL } from '../../config';
 import axios from 'axios';
-const BASE_URL=process.env.REACT_APP_BASE_URL
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
 
 export default function QuestionPage({ selectedValue }) {
@@ -11,30 +11,13 @@ export default function QuestionPage({ selectedValue }) {
     const [filteredQuestions, setFilteredQuestions] = useState([]);
     // console.log("Base url ",BASE_URL);
 
-    const handlePrevPage = () => {
-        setCurrentPage((currentPage) => currentPage - 1);
-    };
-
-    const handleNextPage = () => {
-        setCurrentPage((currentPage) => currentPage + 1);
-    };
-
-    const getPageQuestions = () => {
-        const startIndex = currentPage * 15;
-        const endIndex = startIndex + 15;
-        return filteredQuestions.slice(startIndex, endIndex);
-    };
-
-    const pageQuestions = getPageQuestions();
-
-
     // calling API it fetch the question
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${BASE_URL}get-Allquestions/`, {
                     params: {
-                        tagname: selectedValue ,
+                        tagname: selectedValue,
                     },
                 });
                 setQuestion(response.data.data);
@@ -47,38 +30,57 @@ export default function QuestionPage({ selectedValue }) {
         fetchData();
     }, [selectedValue]);
 
+    const handlePrevPage = () => {
+        setCurrentPage((currentPage) => currentPage - 1);
+    };
+
+    const handleNextPage = () => {
+        setCurrentPage((currentPage) => currentPage + 1);
+    };
+
+    const getPageQuestions = () => {
+        const startIndex = currentPage * 15;
+        const endIndex = startIndex + 15;
+        return filteredQuestions && filteredQuestions.length > 0 ? filteredQuestions.slice(startIndex, endIndex) : [];
+    };
+
+
+    const pageQuestions = getPageQuestions();
+
+
+
+
 
 
     // filter the question
     const showAll = () => {
         setFilteredQuestions(question);
         setCurrentPage(0);
-      };
+    };
     const showBeginner = () => {
         const beginnerQuestions = question.filter((item) => item.level === "beginner");
         setFilteredQuestions(beginnerQuestions);
         setCurrentPage(0);
-      };
-    
-      const showMedium = () => {
+    };
+
+    const showMedium = () => {
         const mediumQuestions = question.filter((item) => item.level === "medium");
         setFilteredQuestions(mediumQuestions);
         setCurrentPage(0);
-      };
-    
-      const showAdvanced = () => {
+    };
+
+    const showAdvanced = () => {
         const advancedQuestions = question.filter((item) => item.level === "advanced");
         setFilteredQuestions(advancedQuestions);
         setCurrentPage(0);
-      };
-
+    };
 
     return (
         <div id='QandACont'>
             <div className='separator'>
                 <div className='line'></div>
                 <h2>
-                    {question.length}+ {selectedValue.toUpperCase()}{' '}
+                    {selectedValue.toUpperCase()}{' '}
                     {'Questions'.toUpperCase()}
                 </h2>
                 <div className='line'></div>
@@ -92,7 +94,7 @@ export default function QuestionPage({ selectedValue }) {
 
             <div className='QuestionCont'>
                 <div className='accordion accordion-flush' id='accordionFlushExample'>
-                    {question.length > 0 ? (
+                    {question ? (
                         pageQuestions.map((item, index) => (
                             <div className='accordion-item' key={index}>
                                 <h2 className='accordion-header'>
@@ -104,11 +106,9 @@ export default function QuestionPage({ selectedValue }) {
                                         aria-expanded='false'
                                         aria-controls={`collapse${index}`}
                                     >
-                                        {/* {index + 1}. {item.qname} */}
                                         <div class="d-flex justify-content-between w-100">
-                                            <div>{index + 1}. {item.qname}</div>
+                                            <div>{index + 1}. <span dangerouslySetInnerHTML={{ __html: item.qname }}></span></div>
                                             <div style={{ paddingRight: '10px' }}>{item.level}</div>
-
                                         </div>
                                     </button>
                                 </h2>
@@ -118,7 +118,7 @@ export default function QuestionPage({ selectedValue }) {
                                     data-bs-parent='#accordionFlushExample'
                                 >
                                     <div className='accordion-body'>
-                                        Answer:- <br /> {item.answer}
+                                        Answer:- <br /> <span dangerouslySetInnerHTML={{ __html: item.answer }}></span>
                                     </div>
                                 </div>
                             </div>
