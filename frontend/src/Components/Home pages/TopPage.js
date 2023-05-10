@@ -30,12 +30,12 @@ export default function TopPage() {
           <div className="infotext">Questions</div>
         </div>
         <div className="infoBox" id="infoBox2">
-          <div className="circle">10+</div>
-          <div className="infotext">Subjects</div>
+          <div className="circle">3</div>
+          <div className="infotext">Categories</div>
         </div>
         <div className="infoBox" id="infoBox3">
-          <div className="circle">1000+</div>
-          <div className="infotext">Question</div>
+          <div className="circle">30+</div>
+          <div className="infotext">Sub-topics</div>
         </div>
       </div>
 
