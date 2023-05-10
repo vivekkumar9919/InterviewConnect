@@ -1,7 +1,7 @@
 const questionController = require('../controller/questionController');
 const express = require('express');
 const router = express.Router();
-
+const auth  = require('../middleware/auth');
 // add question
 router.post('/add-question',auth.authenticate,questionController.postquestion);
 //Fetch all the questions

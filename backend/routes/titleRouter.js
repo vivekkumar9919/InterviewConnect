@@ -1,6 +1,7 @@
 const titleController = require('../controller/titleController');
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
 
 router.post('/add-title',auth.authenticate,titleController.posttitle);
 //Fetch all the title by it's catagory
