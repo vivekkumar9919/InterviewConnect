@@ -1,8 +1,8 @@
-import React, { useState ,useContext } from "react";
+import React, { useState, useContext } from "react";
 import axios from 'axios';
 // import { BASE_URL} from "../../config";
 import AuthContext from '../Context_API/AuthContex';
-const BASE_URL=process.env.REACT_APP_BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const options = {
     beginner: "Beginner",
@@ -14,24 +14,24 @@ const webDevOptions = {
     html: "HTML",
     css: "CSS",
     javascript: "JavaScript",
-    react:"React.js",
-    vue:"Vuejs",
+    react: "React.js",
+    vue: "Vuejs",
     nodejs: "Node.js",
-    express:"Expressjs",
+    express: "Expressjs",
     mongodb: "MongoDB",
-    sql:"SQL",
-    java:"Java",
-    php:"Php",
-    python:"Python",
-    cpp:"C/C++",
-    testing:"Testing",
-    git:"Git"
-  };
-  
-  const dsOptions = {
-    searching:"Searching",
-    sorting:"Sorting",
-    algorithm:"Algorithm",
+    sql: "SQL",
+    java: "Java",
+    php: "Php",
+    python: "Python",
+    cpp: "C/C++",
+    testing: "Testing",
+    git: "Git"
+};
+
+const dsOptions = {
+    searching: "Searching",
+    sorting: "Sorting",
+    algorithm: "Algorithm",
     array: "Array",
     linkedlist: "Linkedlist",
     stack: "Stack",
@@ -39,15 +39,15 @@ const webDevOptions = {
     hashing: "Hashing",
     tree: "Tree",
     graph: "Graph",
-  };
-  
-  const coreSubjOptions = {
+};
+
+const coreSubjOptions = {
     os: "Operating System",
     cn: "Computer Networks",
-    oops:"Oops",
+    oops: "Oops",
     dbms: "Database Management System",
-    se:"Software Engineering"
-  };
+    se: "Software Engineering"
+};
 
 
 export default function PostData() {
@@ -56,7 +56,11 @@ export default function PostData() {
     const [level, setLevel] = useState("");
     const [category, setCategory] = useState("");
     const [subCategory, setSubCategory] = useState("");
-    const { accessToken } = useContext(AuthContext)
+    const { accessToken } = useContext(AuthContext);
+    const [inputValue, setInputValue] = useState('');
+    const [arrayValues, setArrayValues] = useState([]);
+
+
 
     const handleCategoryChange = (e) => {
         const value = e.target.value;
@@ -74,29 +78,43 @@ export default function PostData() {
         const value = e.target.value;
         setSubCategory(value);
     };
-    const handleOnSubmit= async(e)=>{
+
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    const handleAddToArray = (e) => {
+        e.preventDefault();
+        if (inputValue !== '') {
+            setArrayValues([...arrayValues, inputValue]);
+            setInputValue('');
+        }
+    };
+
+    const handleOnSubmit = async (e) => {
         e.preventDefault();
         // Perform form submission logic here
-        const formData={
-            qname:question,
-            answer:text,
-            cname:category,
-            tagname:subCategory,
-            level:level
+        const formData = {
+            qname: question,
+            answer: text,
+            cname: category,
+            tagname: subCategory,
+            photo:arrayValues,
+            level: level
         }
         // console.log("form data",formData)
-        console.log("cookies",accessToken);
-        await axios.post(`${BASE_URL}add-question`, formData,{ headers: { Authorization: accessToken }})
-        // await axios.post(`${BASE_URL}add-question`, formData)
-        .then((response) => {
-          console.log("response",response.data); 
-        })
-        .catch((error) => {
-          console.log("Error from post data",error); 
-        });
+        console.log("cookies", accessToken);
+        await axios.post(`${BASE_URL}add-question`, formData, { headers: { Authorization: accessToken } })
+            // await axios.post(`${BASE_URL}add-question`, formData)
+            .then((response) => {
+                console.log("response", response.data);
+            })
+            .catch((error) => {
+                console.log("Error from post data", error);
+            });
 
         console.log("Form submitted!");
-        console.log(question, text, level ,category ,subCategory);
+        console.log(question, text, level, category, subCategory,arrayValues);
         setQuestion("");
         setText("");
         setLevel("");
@@ -108,43 +126,56 @@ export default function PostData() {
             <form className="postForm">
                 <div class="mb-3">
                     <label htmlFor="question" class="form-label">Question:</label>
-                    <input
+                    <textarea
                         type="text"
                         id="question"
                         name="question"
                         class="form-control"
                         value={question}
                         onChange={(e) => setQuestion(e.target.value)}
-                    />
+                    ></textarea>
                 </div>
                 <div class="mb-3">
                     <label htmlFor="text" class="form-label">Answer:</label>
-                    <input
+                    <textarea
                         type="text"
                         id="text"
                         name="text"
                         class="form-control"
                         value={text}
                         onChange={(e) => setText(e.target.value)}
-                    />
+                    ></textarea>
                 </div>
+
+                {/* image link input  */}
+                <div class="mb-3">
+                    <label htmlFor="text" class="form-label">Image Link:</label>
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        placeholder="Enter a value"
+                    />
+                    <button onClick={handleAddToArray}>Add to array</button>
+                </div>
+
                 {/* drop down for level */}
                 <div class="dropdown">
-                <label htmlFor="level" class="form-label">Level:</label>
-                <select
-                    id="level"
-                    name="level"
-                    value={level}
-                    onChange={(e) => setLevel(e.target.value)}
-                >
-                <option value="" class="dropdown-item">Select level</option>
-                    {Object.entries(options).map(([key, value]) => (
-                        <option key={key} value={key} class="dropdown-item" >
-                            {value}
-                        </option>
-                    ))}
-         
-                </select>
+                    <label htmlFor="level" class="form-label">Level:</label>
+                    <select
+                        id="level"
+                        name="level"
+                        value={level}
+                        onChange={(e) => setLevel(e.target.value)}
+                    >
+                        <option value="" class="dropdown-item">Select level</option>
+                        {Object.entries(options).map(([key, value]) => (
+                            <option key={key} value={key} class="dropdown-item" >
+                                {value}
+                            </option>
+                        ))}
+
+                    </select>
                 </div>
 
 
@@ -220,7 +251,7 @@ export default function PostData() {
                 <br />
                 <button type="submit" className="btn btn-primary" onClick={handleOnSubmit}>Post Data</button>
             </form>
-            
+
 
 
 

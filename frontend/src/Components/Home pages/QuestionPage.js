@@ -10,7 +10,7 @@ export default function QuestionPage({ selectedValue }) {
     const [question, setQuestion] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [filteredQuestions, setFilteredQuestions] = useState([]);
-    const [islodder,setIslodder]=useState(true);
+    const [islodder, setIslodder] = useState(true);
     // console.log("Base url ",BASE_URL);
 
     // calling API it fetch the question
@@ -31,7 +31,7 @@ export default function QuestionPage({ selectedValue }) {
         };
 
         fetchData();
-    }, [selectedValue ,islodder]);
+    }, [selectedValue, islodder]);
 
     const handlePrevPage = () => {
         setCurrentPage((currentPage) => currentPage - 1);
@@ -122,12 +122,19 @@ export default function QuestionPage({ selectedValue }) {
                                 >
                                     <div className='accordion-body'>
                                         Answer:- <br /> <span dangerouslySetInnerHTML={{ __html: item.answer }}></span>
+                                        <br />
+                                        <br />
+                                        {item.photo.length > 0 && item.photo.map((imageLink, index) => (
+                                            // eslint-disable-next-line 
+                                            imageLink && <div className='codeImgBox'><img key={index} src={imageLink} alt={`Image ${index}`} /> </div>
+                                            
+                                        ))}
                                     </div>
                                 </div>
                             </div>
                         ))
                     ) : (
-                        <Lodder/>
+                        <Lodder />
                     )}
                 </div>
 
