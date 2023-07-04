@@ -52,6 +52,17 @@ footer a,footer button,footer input,footer textarea,footer select{
     outline:none !important;
 }
 
+#footerlogo{
+    height: 65px;
+    width: 250px;
+    /* border: 1px solid red; */
+background-image: url("../../public/weblogo1.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+}
+
+
 fieldset{
     border:0;
 }

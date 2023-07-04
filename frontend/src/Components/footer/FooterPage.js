@@ -7,7 +7,8 @@ export default function FooterPage() {
             <footer class="padding_4x">
                 <div class="flex">
                     <section class="flex-content padding_1x">
-                        <h3>InterviewConnect</h3>
+                        {/* <h3>InterviewConnect</h3> */}
+                        <div id='footerlogo'></div>
                         <p>Welcome to InterviewConnect - your one-stop destination for acing your next software developer interview!</p>
                         <p style={{ color: 'white' }}>interviewconnect2023@gmail.com</p>
                     </section>
