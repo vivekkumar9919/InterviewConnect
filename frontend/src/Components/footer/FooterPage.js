@@ -34,10 +34,10 @@ export default function FooterPage() {
                                     <p>Vivek Kumar</p>
                                 </section>
                                 <section class="flex padding_1x">
-                                    <a href="/"><i class="fa fa-linkedin"></i></a>
-                                    <a href="/"><i class="fa fa-github"></i></a>
-                                    <a href="/"><i class="fa fa-facebook"></i></a>
-                                    <a href="/"><i class="fa fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/vivek-kumar-b974b61a6/"><i class="fa fa-linkedin"></i></a>
+                                    <a href="https://github.com/vivekkumar9919"><i class="fa fa-github"></i></a>
+                                    <a href="https://www.facebook.com/profile.php?id=100037722421926&mibextid=ZbWKwL"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.instagram.com/vivek_kumar_1011/?igshid=NGExMmI2YTkyZg%3D%3D"><i class="fa fa-instagram"></i></a>
                                 </section>
                             </div>
                             <div class="satyam">
@@ -45,10 +45,10 @@ export default function FooterPage() {
                                     <p>Satyam Kumar</p>
                                 </section>
                                 <section class="flex padding_1x">
-                                    <a href="/"><i class="fa fa-linkedin"></i></a>
-                                    <a href="/"><i class="fa fa-github"></i></a>
-                                    <a href="/"><i class="fa fa-facebook"></i></a>
-                                    <a href="/"><i class="fa fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/satyam-kumar-883190158/"><i class="fa fa-linkedin"></i></a>
+                                    <a href="https://github.com/satyamy846"><i class="fa fa-github"></i></a>
+                                    {/* <a href="/"><i class="fa fa-facebook"></i></a> */}
+                                    <a href="https://www.instagram.com/satyam_y941/"><i class="fa fa-instagram"></i></a>
                                 </section>
                             </div>
 
