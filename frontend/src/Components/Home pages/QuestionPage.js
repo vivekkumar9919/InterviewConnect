@@ -25,6 +25,7 @@ export default function QuestionPage({ selectedValue }) {
                 setQuestion(response.data.data);
                 setFilteredQuestions(response.data.data);
                 setIslodder(false);
+                setCurrentPage(0);
             } catch (error) {
                 console.error(error);
             }
@@ -42,10 +43,19 @@ export default function QuestionPage({ selectedValue }) {
     };
 
     const getPageQuestions = () => {
-        const startIndex = currentPage * 15;
-        const endIndex = startIndex + 15;
-        return filteredQuestions && filteredQuestions.length > 0 ? filteredQuestions.slice(startIndex, endIndex) : [];
-    };
+        const questionsPerPage = 15;
+        const startIndex = currentPage * questionsPerPage + 1;
+        const endIndex = startIndex + questionsPerPage;
+        const allQuestions = filteredQuestions && filteredQuestions.length > 0 ? filteredQuestions : [];
+        return allQuestions.slice(startIndex - 1, endIndex).map((question, index) => ({
+          ...question,
+          questionNumber: startIndex + index,
+        }));
+      };
+      
+      
+      
+      
 
 
     const pageQuestions = getPageQuestions();
@@ -110,7 +120,7 @@ export default function QuestionPage({ selectedValue }) {
                                         aria-controls={`collapse${index}`}
                                     >
                                         <div class="d-flex justify-content-between w-100">
-                                            <div>{index + 1}. <span dangerouslySetInnerHTML={{ __html: item.qname }}></span></div>
+                                            <div>{item.questionNumber}. <span dangerouslySetInnerHTML={{ __html: item.qname }}></span></div>
                                             <div style={{ paddingRight: '10px' }}>{item.level}</div>
                                         </div>
                                     </button>
