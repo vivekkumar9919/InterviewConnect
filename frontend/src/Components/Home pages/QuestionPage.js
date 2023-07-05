@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { BASE_URL } from '../../config';
 import axios from 'axios';
+import Lodder from '../Lodder/Lodder';
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 
@@ -9,6 +10,8 @@ export default function QuestionPage({ selectedValue }) {
     const [question, setQuestion] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [filteredQuestions, setFilteredQuestions] = useState([]);
+    const [islodder, setIslodder] = useState(true);
+    const[totalQuestions,setTotalquestions]=useState(0);
     // console.log("Base url ",BASE_URL);
 
     // calling API it fetch the question
@@ -22,13 +25,18 @@ export default function QuestionPage({ selectedValue }) {
                 });
                 setQuestion(response.data.data);
                 setFilteredQuestions(response.data.data);
+                let totalQues=response.data.data.length;
+                console.log(totalQues);
+                setTotalquestions(totalQues);
+                setIslodder(false);
+                setCurrentPage(0);
             } catch (error) {
                 console.error(error);
             }
         };
 
         fetchData();
-    }, [selectedValue]);
+    }, [selectedValue, islodder]);
 
     const handlePrevPage = () => {
         setCurrentPage((currentPage) => currentPage - 1);
@@ -39,10 +47,19 @@ export default function QuestionPage({ selectedValue }) {
     };
 
     const getPageQuestions = () => {
-        const startIndex = currentPage * 15;
-        const endIndex = startIndex + 15;
-        return filteredQuestions && filteredQuestions.length > 0 ? filteredQuestions.slice(startIndex, endIndex) : [];
-    };
+        const questionsPerPage = 15;
+        const startIndex = currentPage * questionsPerPage + 1;
+        const endIndex = startIndex + questionsPerPage;
+        const allQuestions = filteredQuestions && filteredQuestions.length > 0 ? filteredQuestions : [];
+        return allQuestions.slice(startIndex - 1, endIndex).map((question, index) => ({
+          ...question,
+          questionNumber: startIndex + index,
+        }));
+      };
+      
+      
+      
+      
 
 
     const pageQuestions = getPageQuestions();
@@ -81,7 +98,7 @@ export default function QuestionPage({ selectedValue }) {
                 <div className='line'></div>
                 <h2>
                     {selectedValue.toUpperCase()}{' '}
-                    {'Questions'.toUpperCase()}
+                    {'Questions'.toUpperCase()} {'('}{totalQuestions}{')'}
                 </h2>
                 <div className='line'></div>
             </div>
@@ -94,7 +111,7 @@ export default function QuestionPage({ selectedValue }) {
 
             <div className='QuestionCont'>
                 <div className='accordion accordion-flush' id='accordionFlushExample'>
-                    {question ? (
+                    {!islodder ? (
                         pageQuestions.map((item, index) => (
                             <div className='accordion-item' key={index}>
                                 <h2 className='accordion-header'>
@@ -107,7 +124,7 @@ export default function QuestionPage({ selectedValue }) {
                                         aria-controls={`collapse${index}`}
                                     >
                                         <div class="d-flex justify-content-between w-100">
-                                            <div>{index + 1}. <span dangerouslySetInnerHTML={{ __html: item.qname }}></span></div>
+                                            <div>{item.questionNumber}. <span dangerouslySetInnerHTML={{ __html: item.qname }}></span></div>
                                             <div style={{ paddingRight: '10px' }}>{item.level}</div>
                                         </div>
                                     </button>
@@ -119,14 +136,22 @@ export default function QuestionPage({ selectedValue }) {
                                 >
                                     <div className='accordion-body'>
                                         Answer:- <br /> <span dangerouslySetInnerHTML={{ __html: item.answer }}></span>
+                                        <br />
+                                        <br />
+                                        {item.photo.length > 0 && item.photo.map((imageLink, index) => (
+                                            // eslint-disable-next-line 
+                                            imageLink && <div className='codeImgBox'><img key={index} src={imageLink} alt={`Image ${index}`} /> </div>
+                                            
+                                        ))}
                                     </div>
                                 </div>
                             </div>
                         ))
                     ) : (
-                        <p>Loading...</p>
+                        <Lodder />
                     )}
                 </div>
+
                 <div className='d-flex justify-content-between mt-3'>
                     <button
                         className='btn  pageBtn'

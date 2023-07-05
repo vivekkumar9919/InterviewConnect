@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import AuthContext from './Context_API/AuthContex';
 import { useNavigate } from 'react-router-dom';
+import Lodder from './Lodder/Lodder';
 // import { BASE_URL } from '../config';
 const BASE_URL=process.env.REACT_APP_BASE_URL;
 
@@ -11,12 +12,13 @@ export default function SignupPage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMsg, setErrormsg] = useState("");
+  const [islodder,setIslodder]=useState(false);
   const { login } = useContext(AuthContext)
   const navigate=useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setIslodder(true);
     try {
       // Create an object with the form data
       const formData = {
@@ -28,10 +30,10 @@ export default function SignupPage() {
 
       // Make a POST request to the backend API
       if (password.length > 7 && confirmPassword === password) {
-        const response = await axios.post(`${BASE_URL}user/signup`, formData);
+        await axios.post(`${BASE_URL}user/signup`, formData);
 
         // Handle the response from the backend
-        console.log(response.data);
+        // console.log(response.data);
 
         // Clear the form inputs data
         setUsername('');
@@ -39,7 +41,7 @@ export default function SignupPage() {
         setPassword('');
         setConfirmPassword('');
         // login to the user
-        
+        setIslodder(false);
         login();
 
         // after login redirect to home page
@@ -47,11 +49,13 @@ export default function SignupPage() {
       }
       else {
         setErrormsg("Password lenght less then 8 or password not matched");
+        setIslodder(false);
       }
     } catch (error) {
       // Handle any errors that occurred during the request
-      console.error(error);
+      // console.error(error);
       setErrormsg(error.message);
+      setIslodder(false);
     }
   };
 
@@ -74,7 +78,7 @@ export default function SignupPage() {
               <form onSubmit={handleSubmit}>
                 <p>
                   <label>Email address<span>*</span></label>
-                  <input type="text" placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                  <input type="email" placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} required />
                 </p>
                 <p>
                   <label>Name<span>*</span></label>
@@ -89,7 +93,7 @@ export default function SignupPage() {
                   <input type="password" placeholder="Conform Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                 </p>
                 <p>
-                  <input type="submit" value="Sign Up" />
+                  {!islodder?<input type="submit" value="Sign Up" />:<Lodder/>}
                 </p>
               </form>
             </div>

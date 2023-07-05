@@ -30,9 +30,61 @@
     border: 2px solid #D6C6E1;
     padding: 10px 15px 10px 15px;
     border-radius: 10px;
-    background-color: #F5F3F7;
+    /* background-color: #F5F3F7; */
+    background-color: #a168da;
     margin-top: 20px;
 }
+
+.fieldName {
+  display: inline-block;
+  border-radius: 10px;
+  border: 1px solid #03045e;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  z-index: 1;
+  color: white;
+  box-shadow: 4px 5px 17px -4px #717576;
+ }
+ 
+ .fieldName::before,
+ .fieldName::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  transform: skew(15deg);
+  transition: all 0.5s;
+  overflow: hidden;
+  z-index: -1;
+ }
+ 
+ .fieldName::before {
+  left: -10px;
+  background: #472e5e;
+ }
+ 
+ .fieldName::after {
+  right: -10px;
+  background: #a168da;
+ }
+ 
+ .fieldName:hover::before,
+ .fieldName:hover::after {
+  width: 58%;
+ }
+ 
+ .fieldName:hover span {
+  color: white ;
+  transition: 0.3s;
+ }
+ 
+ .fieldName span {
+  color: white ;
+  font-size: 18px;
+  transition: all 0.3s ease-in;
+ }
 
 
 
@@ -56,6 +108,47 @@
     background-color: white;
     cursor: pointer;
 }
+
+.topicName {
+
+  /* color: #2c9caf; */
+  transition: all 1000ms;
+
+  position: relative;
+  overflow: hidden;
+  /* outline: 1px solid #2c9caf; */
+  box-shadow: 4px 5px 17px -4px #717576;
+}
+
+.topicName:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 1px solid #70bdca;
+  box-shadow: 4px 5px 17px -4px #268391;
+}
+
+.topicName::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #2c9caf;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+.topicName:hover::before {
+  width: 250%;
+}
+
+
+
+
+
+
 /* WebDevelopemnt, subject and datastructure Page  css end here */
 
 
@@ -88,6 +181,51 @@
 .level.active {
   background-color: blue;
 }
+.level {
+  position: relative;
+  color: #82ada9;
+  border: 2px solid #82ada9;
+  background-color: transparent;
+  box-shadow: 4px 5px 17px -4px #82ada9;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+.level::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  /* width: 50px;
+  height: 50px; */
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #82ada9;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.level:hover::before {
+  scale: 3;
+}
+
+.level:hover {
+  color: #212121;
+  scale: 1.1;
+  box-shadow: 0 0px 20px rgba(193, 163, 98,0.4);
+}
+
+.level:active {
+  scale: 1;
+}
+
+
+
+
+
+
+
+
 /* horizontal line css start  */
 .separator{
     display:flex;
@@ -126,6 +264,10 @@
 /* question and answer container css end */
 
 
+
+
+
+
 /* Question Page css start  */
 .pageBtn{
     background-color: #61398F;
@@ -134,6 +276,9 @@
 /* Question Page css end  */
 
 
+.codeImgBox{
+  margin-bottom: 10px;
+}
 
 
 /* @media screen and (min-width: 768px) {
