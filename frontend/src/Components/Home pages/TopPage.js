@@ -26,7 +26,7 @@ export default function TopPage() {
       {/* <div className='colorBox'></div> */}
       <div className="topBox2">
         <div className="infoBox" id="infoBox1">
-          <div className="circle">1000+</div>
+          <div className="circle">1300+</div>
           <div className="infotext">Questions</div>
         </div>
         <div className="infoBox" id="infoBox2">

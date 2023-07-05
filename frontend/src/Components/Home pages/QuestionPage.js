@@ -11,6 +11,7 @@ export default function QuestionPage({ selectedValue }) {
     const [currentPage, setCurrentPage] = useState(0);
     const [filteredQuestions, setFilteredQuestions] = useState([]);
     const [islodder, setIslodder] = useState(true);
+    const[totalQuestions,setTotalquestions]=useState(0);
     // console.log("Base url ",BASE_URL);
 
     // calling API it fetch the question
@@ -24,6 +25,9 @@ export default function QuestionPage({ selectedValue }) {
                 });
                 setQuestion(response.data.data);
                 setFilteredQuestions(response.data.data);
+                let totalQues=response.data.data.length;
+                console.log(totalQues);
+                setTotalquestions(totalQues);
                 setIslodder(false);
                 setCurrentPage(0);
             } catch (error) {
@@ -94,7 +98,7 @@ export default function QuestionPage({ selectedValue }) {
                 <div className='line'></div>
                 <h2>
                     {selectedValue.toUpperCase()}{' '}
-                    {'Questions'.toUpperCase()}
+                    {'Questions'.toUpperCase()} {'('}{totalQuestions}{')'}
                 </h2>
                 <div className='line'></div>
             </div>
