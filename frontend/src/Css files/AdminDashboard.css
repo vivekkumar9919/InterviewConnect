@@ -1,0 +1,25 @@
+
+/* 
+    --bg-100:#F4EEFF;
+    --bg-200:#DCD6F7;
+    --bg-300:#bbb9e9;
+*/
+
+.AdminCont{
+    min-height: 100vh;
+    border: 2px solid green;
+    font-family: 'Armata';
+    background-color:#A6B1E1 ;
+}
+
+.homeBtn{
+    margin-top: 10px;
+    margin-left: 10px;
+    /* font-size: 20px; */
+    /* border: 2px solid red; */
+}
+.adminHeading{
+    text-align: center;
+    font-family: 'Belgrano';
+    margin-top: 20px;
+}

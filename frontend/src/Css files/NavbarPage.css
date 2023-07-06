@@ -1,0 +1,59 @@
+/* <<<<<<<<<<<<<<<<<<<<<<< navbar css start >>>>>>>>>>>>>>>>>>>>>>>>  */
+:root{
+  --color1:#424874;
+  --color2:#A6B1E1;
+  --color3:#bbb9e9;
+  --color4:#64748b;
+  --color5:#DCD6F7;
+
+}
+.NavbarCont{
+  font-family: 'Armata';
+}
+.bg-color {
+    background-color: #A6B1E1;
+    color: white;
+  }
+  .nav-btn{
+    background-color: #424874;
+    color: white;
+  }
+  .nav-element{
+    /* color: #292524; */
+    color: white;
+  }
+
+  .disabled-link {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .modal-body,.modal-header,.modal-footer{
+    background-color: var(--color4);
+  }
+  .modal-dialog{
+    color: white;
+    font-family: 'Armata';
+  }
+  .modal-footer button:nth-child(2){
+    background-color: var(--color1) !important;
+  }
+
+
+  #navlogo {
+    /* border: 2px solid red; */
+
+    position: absolute;
+    background-image: url("../../public/weblogo1.svg");
+    /* background-size: cover;
+    background-repeat: no-repeat; */
+    /* height: 40px; */
+    width: 200px;
+    height: 50px;
+  }
+  /*<<<<<<<<<<<<<<<<<<<<< navbar css end  >>>>>>>>>>>>>>>>>>>>>>>>*/
+
+
+
+
+
