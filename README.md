@@ -1,6 +1,6 @@
 # InterviewConnect - Interview Preparation Website
 
-![InterviewConnect Logo](./frontend/public/weblogo1.svg)
+![weblogo1](https://github.com/vivekkumar9919/InterviewConnect/assets/70272774/f6250587-e3a8-4c95-8c21-175e693e6a8d)
 
 InterviewConnect is a comprehensive interview preparation website that aims to help job seekers and aspiring developers enhance their skills and succeed in technical interviews. The website provides a vast collection of interview questions in various categories, including Web Development, Data Structures, and Core Subjects.
 
