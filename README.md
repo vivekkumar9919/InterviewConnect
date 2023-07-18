@@ -22,7 +22,7 @@ InterviewConnect is a collaborative project created by Vivek Kumar and Satyam Ya
 
 - **Categorized Questions**: The interview questions are grouped into three main categories - Web Development, Data Structures, and Core Subjects. Each category contains topic-wise interview questions, making it easier for users to navigate and find relevant questions.
 
-- **Extensive Question Collection**: InterviewConnect boasts a collection of over 1300+ interview questions, covering a wide range of technologies and core subjects. From HTML, CSS, JavaScript, C++, Node.js to data structures like arrays, linked lists, stacks, queues, and essential core subjects like Operating System, Computer Networks, Object-Oriented Programming, and Databases.
+- **Extensive Question Collection**: InterviewConnect boosts a collection of over 1300+ interview questions, covering a wide range of technologies and core subjects. From HTML, CSS, JavaScript, C++, Node.js to data structures like arrays, linked lists, stacks, queues, and essential core subjects like Operating System, Computer Networks, Object-Oriented Programming, and Databases.
 
 - **Question Sorting**: Sort the question according the diffulities of Question.
 
@@ -58,7 +58,7 @@ InterviewConnect offers interview questions in the following categories:
 InterviewConnect is built using a variety of technologies to provide a robust and efficient platform for users:
 
 - Frontend:  HTML, CSS, JavaScript, React and Bootstrap
-- Backend: Node.js andExpress
+- Backend: Node.js and Express.js
 - Database: MongoDB
 - Deployment: Vercel and Render
 
