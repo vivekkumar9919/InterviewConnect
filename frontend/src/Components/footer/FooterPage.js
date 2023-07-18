@@ -10,14 +10,14 @@ export default function FooterPage() {
                         {/* <h3>InterviewConnect</h3> */}
                         <div id='footerlogo'></div>
                         <p>Welcome to InterviewConnect - your one-stop destination for acing your next software developer interview!</p>
-                        <p style={{ color: 'white' }}>interviewconnect2023@gmail.com</p>
+                        <p >interviewconnect2023@gmail.com</p>
                     </section>
                     <section class="flex-content padding_1x">
                         <h3>Quick Links</h3>
                         <a href="/">Home</a>
                         <a href="/" aria-disabled="true" >Quiz</a>
                         <a href="#reviewNav">Reviews</a>
-                        <a className="nav-link nav-element" href='/' data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Feedback</a>
+                        <a  href='/' data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Feedback</a>
 
                     </section>
                     <section class="flex-content padding_1x">
